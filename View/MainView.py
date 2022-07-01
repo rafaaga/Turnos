@@ -1,4 +1,5 @@
 import streamlit as st
+import json
 from streamlit_option_menu import option_menu
 import Controlador
 from Controlador.Controller import Vehiculos
@@ -39,7 +40,10 @@ class MainView:
                                         icons=['bi bi-bar-chart-steps', 'bi bi-arrow-down-left-square', 'bi bi-arrow-up-right-square'], menu_icon="bi bi-view-list", default_index=0, orientation="horizontal")
     def controlar_menu(self):
         if self.menu_actual == "Listar Turnos":
-            listarTurnos(st, self.controller)
+            with open('orden.json') as file:
+                info = json.load(file)
+                orden = info["orden"]
+            listarTurnos(st, self.controller, orden)
 # Main call
 if __name__ == "__main__":
     main = MainView()
