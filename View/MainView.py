@@ -4,6 +4,7 @@ from streamlit_option_menu import option_menu
 import Controlador
 from Controlador.Controller import Vehiculos
 from View.ListarTurnos import listarTurnos
+from View.Salida import *
 
 
 class MainView:
@@ -36,14 +37,22 @@ class MainView:
         with st.sidebar:
             st.image('https://static.wixstatic.com/media/012503_f8e788dce4c54b428a4d47bac8b85208~mv2.png', '',
                      300)
-            self.menu_actual = option_menu("Menú", ['Listar Turnos', 'Registrar LLegada', 'Registrar Salida'],
+            self.menu_actual = option_menu("Menú", ['Listar Turnos', 'Registrar Llegada', 'Registrar Salida'],
                                         icons=['bi bi-bar-chart-steps', 'bi bi-arrow-down-left-square', 'bi bi-arrow-up-right-square'], menu_icon="bi bi-view-list", default_index=0, orientation="horizontal")
     def controlar_menu(self):
-        if self.menu_actual == "Listar Turnos":
+        if (self.menu_actual == "Listar Turnos"):
             with open('orden.json') as file:
                 info = json.load(file)
                 orden = info["orden"]
             listarTurnos(st, self.controller, orden)
+        if self.menu_actual == "Registrar Salida":
+            with open('orden.json') as file:
+                info = json.load(file)
+            salida(st, self.controller, info)
+        if self.menu_actual == "Registrar Llegada":
+            with open('orden.json') as file:
+                info = json.load(file)
+            entrada(st, self.controller, info)
 # Main call
 if __name__ == "__main__":
     main = MainView()
