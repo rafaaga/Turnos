@@ -48,6 +48,8 @@ class MainView:
         if self.menu_actual == "Registrar Salida":
             salida(st, self.controller, ws)
         if self.menu_actual == "Registrar Llegada":
+            entrada(st, self.controller, ws)
+        if self.menu_actual == "Ver Historial":
             acceder_a_historial(st)
 # Main call
 if __name__ == "__main__":
