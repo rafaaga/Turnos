@@ -63,8 +63,5 @@ def entrada(st, controller, ws):
 def acceder_a_historial(st):
 	boton = st.button("Ir a Excel")
 	if boton:
-		js = "window.open('https://docs.google.com/spreadsheets/d/18A8xVpVIUmji5KhsyycquCtoNTCPUEkW8kHISCzJIvM/edit#gid=0')"  # New tab or window
-		js = "window.location.href = 'https://docs.google.com/spreadsheets/d/18A8xVpVIUmji5KhsyycquCtoNTCPUEkW8kHISCzJIvM/edit#gid=0'"  # Current tab
-		html = '<img src onerror="{}">'.format(js)
-		div = Div(text=html)
-		st.bokeh_chart(div)
+		link = 'https://docs.google.com/spreadsheets/d/18A8xVpVIUmji5KhsyycquCtoNTCPUEkW8kHISCzJIvM/edit#gid=0'
+		st.markdown(link, unsafe_allow_html=True)
