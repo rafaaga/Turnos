@@ -60,3 +60,4 @@ def entrada(st, controller, ws):
 			st.text("Se agregó a "+str(seleccion)+" a la cola")
 
 def acceder_a_historial():
+  return 0
