@@ -1,3 +1,4 @@
+import webbrowser
 
 def salida(st, controller, ws):
 	orden = []
@@ -59,5 +60,8 @@ def entrada(st, controller, ws):
 				ws.update(celda,orden[i-2])
 			st.text("Se agregó a "+str(seleccion)+" a la cola")
 
-def acceder_a_historial():
-  return 0
+def acceder_a_historial(st):
+	boton = st.button("Ir a Excel")
+	if boton:
+		webbrowser.open('https: // docs.google.com / spreadsheets / d / 18'
+						'A8xVpVIUmji5KhsyycquCtoNTCPUEkW8kHISCzJIvM / edit?usp = sharing')
