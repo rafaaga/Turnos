@@ -58,3 +58,5 @@ def entrada(st, controller, ws):
 				celda = "B"+str(i)
 				ws.update(celda,orden[i-2])
 			st.text("Se agregó a "+str(seleccion)+" a la cola")
+
+def acceder_a_historial():

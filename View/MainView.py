@@ -39,8 +39,8 @@ class MainView:
         with st.sidebar:
             st.image('https://static.wixstatic.com/media/012503_f8e788dce4c54b428a4d47bac8b85208~mv2.png', '',
                      300)
-            self.menu_actual = option_menu("Menú", ['Listar Turnos', 'Registrar Llegada', 'Registrar Salida'],
-                                        icons=['bi bi-bar-chart-steps', 'bi bi-arrow-down-left-square', 'bi bi-arrow-up-right-square'], menu_icon="bi bi-view-list", default_index=0, orientation="horizontal")
+            self.menu_actual = option_menu("Menú", ['Listar Turnos', 'Registrar Llegada', 'Registrar Salida','Ver Historial'],
+                                        icons=['bi bi-bar-chart-steps', 'bi bi-arrow-down-left-square', 'bi bi-arrow-up-right-square', 'bi bi-clock-history'], menu_icon="bi bi-view-list", default_index=0, orientation="horizontal")
     def controlar_menu(self):
         if (self.menu_actual == "Listar Turnos"):
             #listarTurnos(st, self.controller, orden)
