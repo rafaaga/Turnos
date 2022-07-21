@@ -1,4 +1,4 @@
-import webbrowser
+from bokeh.models.widgets import Div
 
 def salida(st, controller, ws):
 	orden = []
@@ -63,5 +63,8 @@ def entrada(st, controller, ws):
 def acceder_a_historial(st):
 	boton = st.button("Ir a Excel")
 	if boton:
-		webbrowser.open('https: // docs.google.com / spreadsheets / d / 18'
-						'A8xVpVIUmji5KhsyycquCtoNTCPUEkW8kHISCzJIvM / edit?usp = sharing')
+		js = "window.open('https://docs.google.com/spreadsheets/d/18A8xVpVIUmji5KhsyycquCtoNTCPUEkW8kHISCzJIvM/edit#gid=0')"  # New tab or window
+		js = "window.location.href = 'https://docs.google.com/spreadsheets/d/18A8xVpVIUmji5KhsyycquCtoNTCPUEkW8kHISCzJIvM/edit#gid=0'"  # Current tab
+		html = '<img src onerror="{}">'.format(js)
+		div = Div(text=html)
+		st.bokeh_chart(div)
