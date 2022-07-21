@@ -61,7 +61,10 @@ def entrada(st, controller, ws):
 			st.text("Se agregó a "+str(seleccion)+" a la cola")
 
 def acceder_a_historial(st):
-	boton = st.button("Ir a Excel")
+	st.title("Consultar historial")
+	st.subheader("Al hacer clic en el botón, se visualiza el link para acceder al archivo Excel")
+	st.subheader("Allí, hacer clic en Archivo >> Historial de versiones >> Ver historial de versiones")
+	boton = st.button("Desplegar enlace")
 	if boton:
 		link = 'https://docs.google.com/spreadsheets/d/18A8xVpVIUmji5KhsyycquCtoNTCPUEkW8kHISCzJIvM/edit#gid=0'
 		st.markdown(link, unsafe_allow_html=True)
