@@ -1,11 +1,14 @@
 import streamlit as st
-import json
+import gspread
 from streamlit_option_menu import option_menu
 import Controlador
 from Controlador.Controller import Vehiculos
 from View.ListarTurnos import listarTurnos
 from View.Salida import *
 
+sa = gspread.service_account(filename="ServiceAccount.json")
+sh = sa.open("Turnos")
+ws = sh.worksheet("Sheet1")
 
 class MainView:
     def __init__(self) -> None:
@@ -41,18 +44,12 @@ class MainView:
                                         icons=['bi bi-bar-chart-steps', 'bi bi-arrow-down-left-square', 'bi bi-arrow-up-right-square'], menu_icon="bi bi-view-list", default_index=0, orientation="horizontal")
     def controlar_menu(self):
         if (self.menu_actual == "Listar Turnos"):
-            with open('orden.json') as file:
-                info = json.load(file)
-                orden = info["orden"]
-            listarTurnos(st, self.controller, orden)
+            #listarTurnos(st, self.controller, orden)
+            listarTurnos(st, self.controller, ws)
         if self.menu_actual == "Registrar Salida":
-            with open('orden.json') as file:
-                info = json.load(file)
-            salida(st, self.controller, info)
+            salida(st, self.controller, ws)
         if self.menu_actual == "Registrar Llegada":
-            with open('orden.json') as file:
-                info = json.load(file)
-            entrada(st, self.controller, info)
+            entrada(st, self.controller, ws)
 # Main call
 if __name__ == "__main__":
     main = MainView()
